@@ -1,0 +1,62 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+    "assist": { "actions": { "source": { "organizeImports": "on" } } },
+    "files": {
+        "includes": [
+            "**/biome.json",
+            "**/commitlint.config.cjs",
+            "**/vite.config.ts",
+            "**/src/**/*",
+            "**/demo/**/*",
+            "**/test/**/*"
+        ]
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "complexity": {
+                "noExcessiveCognitiveComplexity": "warn",
+                "useSimplifiedLogicExpression": "error"
+            },
+            "correctness": {
+                "noUnusedImports": "error",
+                "noUnusedPrivateClassMembers": "error",
+                "useHookAtTopLevel": "error",
+                "noInvalidBuiltinInstantiation": "error",
+                "noSwitchDeclarations": "error"
+            },
+            "style": {
+                "useBlockStatements": "error",
+                "useCollapsedElseIf": "error",
+                "useForOf": "error",
+                "useFragmentSyntax": "error",
+                "useShorthandAssign": "error",
+                "noParameterAssign": "error",
+                "useAsConstAssertion": "error",
+                "useDefaultParameterLast": "error",
+                "useEnumInitializers": "error",
+                "useSelfClosingElements": "error",
+                "useSingleVarDeclarator": "error",
+                "noUnusedTemplateLiteral": "error",
+                "useNumberNamespace": "error",
+                "noInferrableTypes": "error",
+                "noUselessElse": "error",
+                "useConsistentArrayType": { "level": "error", "options": { "syntax": "shorthand" } }
+            },
+            "suspicious": {
+                "noApproximativeNumericConstant": "warn",
+                "noEmptyBlockStatements": "error",
+                "noConsole": {
+                    "level": "error",
+                    "options": { "allow": ["assert", "error", "info", "warn"] }
+                }
+            }
+        }
+    },
+    "formatter": {
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineWidth": 100
+    }
+}
