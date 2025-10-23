@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.0.1...v1.0.2) (2025-10-23)
+
+
+### Bug Fixes
+
+* remove usage of localeAwareWeekNumber() ([8f9b424](https://github.com/DASPRiD/mui-temporal-pickers/commit/8f9b424b3d09fb629e1db25fdbdb32eae3746f8d))
+
 ## [1.0.1](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.0.0...v1.0.1) (2025-10-23)
 
 

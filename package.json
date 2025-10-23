@@ -1,6 +1,6 @@
 {
   "name": "mui-temporal-pickers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A small utility library providing Temporal support for MUI X Date and Time Pickers",
   "author": "Ben Scholzen 'DASPRiD'",
   "keywords": [
