@@ -6,7 +6,6 @@ import {
     lastDayOfMonth,
     lastDayOfWeek,
     lastDayOfYear,
-    localeAwareWeekNumber,
 } from "temporal-extra";
 import type { LocaleSpecs } from "../locale/specs.js";
 import type {
@@ -54,7 +53,7 @@ export type AdapterDateOperations<T extends ValidTemporal> = {
     getMonth: (value: T) => number;
     getDate: (value: T) => number;
     getDaysInMonth: (value: T) => number;
-    getWeekNumber: (value: T, locale: Intl.Locale) => number;
+    getWeekNumber: (value: T) => number;
     getDayOfWeek: (value: T) => number;
     setYear: (value: T, year: number) => T;
     setMonth: (value: T, month: number) => T;
@@ -102,7 +101,13 @@ export const defaultAdapterDateOperations: AdapterDateOperations<ValidDateTempor
     getMonth: (value) => value.month,
     getDate: (value) => value.day,
     getDaysInMonth: (value) => value.daysInMonth,
-    getWeekNumber: (value, locale) => localeAwareWeekNumber(value, locale),
+    getWeekNumber: (value) => {
+        if (!value.weekOfYear) {
+            throw new Error("Date is in a calendar system without weeks");
+        }
+
+        return value.weekOfYear;
+    },
     getDayOfWeek: (value) => value.dayOfWeek,
     setYear: (value, year) => value.with({ year }),
     setMonth: (value, month) => value.with({ month }),

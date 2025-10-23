@@ -301,7 +301,7 @@ export abstract class AdapterTemporalBase<TTemporal extends ValidTemporal>
     }
 
     public getWeekNumber(value: TTemporal): number {
-        return this.dateOperations.getWeekNumber(value, this.locale);
+        return this.dateOperations.getWeekNumber(value);
     }
 
     public getDayOfWeek(value: TTemporal): number {
