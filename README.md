@@ -122,7 +122,7 @@ Due to how `Intl.DateTimeFormat` works, text field formatting only supports nume
 `HH`, `mm`). Literal characters (like slashes or dashes) are fine.
 
 The only non-numeric token allowed is **AM/PM**, which is not currently localized and always displays as `"AM"` /
-`"PM"`.
+`"PM"`. Additionally, "MMM" and "MMMM" are supported, although they might yield ideal values for every locale.
 
 ### No runtime validation of input types
 
