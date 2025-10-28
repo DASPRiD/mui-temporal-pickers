@@ -2,18 +2,18 @@ import type { FieldFormatTokenMap } from "@mui/x-date-pickers";
 
 export const dateFormatTokenMap: FieldFormatTokenMap = {
     // Year
-    yy: "year",
+    yy: { sectionType: "year", contentType: "digit", maxLength: 2 },
     yyyy: { sectionType: "year", contentType: "digit", maxLength: 4 },
 
     // Month
     M: { sectionType: "month", contentType: "digit", maxLength: 2 },
-    MM: "month",
+    MM: { sectionType: "month", contentType: "digit", maxLength: 2 },
     MMM: { sectionType: "month", contentType: "letter" },
     MMMM: { sectionType: "month", contentType: "letter" },
 
     // Day of the month
     d: { sectionType: "day", contentType: "digit", maxLength: 2 },
-    dd: "day",
+    dd: { sectionType: "day", contentType: "digit", maxLength: 2 },
 
     // Day of the week
     ccc: { sectionType: "weekDay", contentType: "letter" },
@@ -27,17 +27,17 @@ export const timeFormatTokenMap: FieldFormatTokenMap = {
 
     // Hours
     H: { sectionType: "hours", contentType: "digit", maxLength: 2 },
-    HH: "hours",
+    HH: { sectionType: "hours", contentType: "digit", maxLength: 2 },
     h: { sectionType: "hours", contentType: "digit", maxLength: 2 },
-    hh: "hours",
+    hh: { sectionType: "hours", contentType: "digit", maxLength: 2 },
 
     // Minutes
     m: { sectionType: "minutes", contentType: "digit", maxLength: 2 },
-    mm: "minutes",
+    mm: { sectionType: "minutes", contentType: "digit", maxLength: 2 },
 
     // Seconds
     s: { sectionType: "seconds", contentType: "digit", maxLength: 2 },
-    ss: "seconds",
+    ss: { sectionType: "seconds", contentType: "digit", maxLength: 2 },
 };
 
 export const dateTimeFormatTokenMap: FieldFormatTokenMap = {

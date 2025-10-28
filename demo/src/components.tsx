@@ -8,6 +8,8 @@ import {
     TemporalRootProvider,
     TemporalZonedDateTimeProvider,
 } from "../../src/index.js";
+import { TemporalPlainMonthDayProvider } from "../../src/providers/plain-month-day.js";
+import { TemporalPlainYearMonthProvider } from "../../src/providers/plain-year-month.js";
 
 export const Components = (): ReactNode => {
     const [time, setTime] = useState<Temporal.PlainTime | null>(Temporal.Now.plainTimeISO());
@@ -17,6 +19,12 @@ export const Components = (): ReactNode => {
     );
     const [zonedDateTime, setZonedDateTime] = useState<Temporal.ZonedDateTime | null>(
         Temporal.Now.zonedDateTimeISO(),
+    );
+    const [yearMonth, setYearMonth] = useState<Temporal.PlainYearMonth | null>(
+        Temporal.Now.plainDateISO().toPlainYearMonth(),
+    );
+    const [monthDay, setMonthDay] = useState<Temporal.PlainMonthDay | null>(
+        Temporal.Now.plainDateISO().toPlainMonthDay(),
     );
 
     return (
@@ -133,6 +141,70 @@ export const Components = (): ReactNode => {
                                 }}
                             />
                         </TemporalZonedDateTimeProvider>
+                    </TemporalRootProvider>
+                </Stack>
+            </Paper>
+
+            <Paper sx={{ p: 2 }}>
+                <Typography variant="h6" sx={{ mb: 1 }}>
+                    Date Time Picker (year-month)
+                </Typography>
+
+                <Stack direction="row" spacing={2}>
+                    <TemporalRootProvider>
+                        <TemporalPlainYearMonthProvider>
+                            <DatePicker
+                                views={["month", "year"]}
+                                value={yearMonth}
+                                onChange={(value) => {
+                                    setYearMonth(value as Temporal.PlainYearMonth);
+                                }}
+                            />
+                        </TemporalPlainYearMonthProvider>
+                    </TemporalRootProvider>
+                    <TemporalRootProvider locale="de-DE">
+                        <TemporalPlainYearMonthProvider>
+                            <DatePicker
+                                views={["month", "year"]}
+                                value={yearMonth}
+                                onChange={(value) => {
+                                    setYearMonth(value as Temporal.PlainYearMonth);
+                                }}
+                            />
+                        </TemporalPlainYearMonthProvider>
+                    </TemporalRootProvider>
+                </Stack>
+            </Paper>
+
+            <Paper sx={{ p: 2 }}>
+                <Typography variant="h6" sx={{ mb: 1 }}>
+                    Date Time Picker (month-day)
+                </Typography>
+
+                <Stack direction="row" spacing={2}>
+                    <TemporalRootProvider>
+                        <TemporalPlainMonthDayProvider>
+                            <DatePicker
+                                dayOfWeekFormatter={() => ""}
+                                views={["month", "day"]}
+                                value={monthDay}
+                                onChange={(value) => {
+                                    setMonthDay(value as Temporal.PlainMonthDay);
+                                }}
+                            />
+                        </TemporalPlainMonthDayProvider>
+                    </TemporalRootProvider>
+                    <TemporalRootProvider locale="de-DE">
+                        <TemporalPlainMonthDayProvider>
+                            <DatePicker
+                                dayOfWeekFormatter={() => ""}
+                                views={["month", "day"]}
+                                value={monthDay}
+                                onChange={(value) => {
+                                    setMonthDay(value as Temporal.PlainMonthDay);
+                                }}
+                            />
+                        </TemporalPlainMonthDayProvider>
                     </TemporalRootProvider>
                 </Stack>
             </Paper>

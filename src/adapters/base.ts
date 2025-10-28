@@ -23,7 +23,9 @@ export type ValidTemporal =
     | Temporal.PlainTime
     | Temporal.PlainDate
     | Temporal.PlainDateTime
-    | Temporal.ZonedDateTime;
+    | Temporal.ZonedDateTime
+    | Temporal.PlainYearMonth
+    | Temporal.PlainMonthDay;
 
 export type ValidTimeTemporal =
     | Temporal.PlainTime
@@ -188,7 +190,7 @@ export abstract class AdapterTemporalBase<TTemporal extends ValidTemporal>
     }
 
     public formatByString(value: TTemporal, format: string): string {
-        if (format === "s" && value instanceof Temporal.PlainDate) {
+        if (format === "s" && !("second" in value)) {
             // This is MUI-X collecting localized digits. It allows us to return "0" here, which makes it fall back to
             // non-localized digits!
             return "0";
@@ -309,31 +311,59 @@ export abstract class AdapterTemporalBase<TTemporal extends ValidTemporal>
     }
 
     public setYear(value: TTemporal, year: number): TTemporal {
-        return this.dateOperations.setYear(value, year);
+        try {
+            return this.dateOperations.setYear(value, year);
+        } catch {
+            return null as unknown as TTemporal;
+        }
     }
 
     public setMonth(value: TTemporal, month: number): TTemporal {
-        return this.dateOperations.setMonth(value, month);
+        try {
+            return this.dateOperations.setMonth(value, month);
+        } catch {
+            return null as unknown as TTemporal;
+        }
     }
 
     public setDate(value: TTemporal, date: number): TTemporal {
-        return this.dateOperations.setDate(value, date);
+        try {
+            return this.dateOperations.setDate(value, date);
+        } catch {
+            return null as unknown as TTemporal;
+        }
     }
 
     public setHours(value: TTemporal, hours: number): TTemporal {
-        return this.timeOperations.setHours(value, hours);
+        try {
+            return this.timeOperations.setHours(value, hours);
+        } catch {
+            return null as unknown as TTemporal;
+        }
     }
 
     public setMinutes(value: TTemporal, minutes: number): TTemporal {
-        return this.timeOperations.setMinutes(value, minutes);
+        try {
+            return this.timeOperations.setMinutes(value, minutes);
+        } catch {
+            return null as unknown as TTemporal;
+        }
     }
 
     public setSeconds(value: TTemporal, seconds: number): TTemporal {
-        return this.timeOperations.setSeconds(value, seconds);
+        try {
+            return this.timeOperations.setSeconds(value, seconds);
+        } catch {
+            return null as unknown as TTemporal;
+        }
     }
 
     public setMilliseconds(value: TTemporal, milliseconds: number): TTemporal {
-        return this.timeOperations.setMilliseconds(value, milliseconds);
+        try {
+            return this.timeOperations.setMilliseconds(value, milliseconds);
+        } catch {
+            return null as unknown as TTemporal;
+        }
     }
 
     public getWeekArray(value: TTemporal): TTemporal[][] {

@@ -12,7 +12,8 @@ pickers to work seamlessly with `Temporal.PlainDate`, `Temporal.PlainTime`, `Tem
 ## Features
 
 - Plug-and-play support for Temporal types in MUI X pickers
-- Supports all major temporal types: `PlainDate`, `PlainTime`, `PlainDateTime`, `ZonedDateTime`
+- Supports all major temporal types: `PlainDate`, `PlainTime`, `PlainDateTime`, `ZonedDateTime`, `PlainYearMonth` and
+  `PlainMonthDay`
 - Global locale, format, and text customization via root provider
 - Fully tree-shakable and composable
 - Built-in localization fallback to `en-US`
@@ -104,6 +105,14 @@ import { DatePicker, TimePicker, DateTimePicker } from '@mui/x-date-pickers';
 
 Pickers **must be wrapped** in the matching provider to work correctly. Mixed types or mismatched types will result in
 runtime errors.
+
+## Usage with `PlainYearMonth` and `PlainMonthDay`
+
+To use `PlainYearMonth` and `PlainMonthDay` with the pickers, you must use a `DatePicker` with
+`views={['month', 'year']}` or a `DatePicker` with `views={['month', 'day']}` respectively.
+
+For `PlainMonthDay`, you might also want to disable the week days, as they make no sense without a year. To do so, set
+`dayOfWeekFormatter={() => ""}`.
 
 ## Caveats
 
