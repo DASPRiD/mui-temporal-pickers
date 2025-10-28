@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.0.2...v1.1.0) (2025-10-28)
+
+
+### Features
+
+* add support for PlainYearMonth and PlainMonthDay ([d9c70d5](https://github.com/DASPRiD/mui-temporal-pickers/commit/d9c70d5c15182cc7d90d9f74016d80c0017f8469))
+
 ## [1.0.2](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.0.1...v1.0.2) (2025-10-23)
 
 
