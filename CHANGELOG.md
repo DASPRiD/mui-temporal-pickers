@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.1.0...v1.1.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* **locale:** expand meta formats before parsing temporal values ([cdcd300](https://github.com/DASPRiD/mui-temporal-pickers/commit/cdcd3007dc964983bd8ec8d381f9c18efbed8577)), closes [#1](https://github.com/DASPRiD/mui-temporal-pickers/issues/1)
+
 # [1.1.0](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.0.2...v1.1.0) (2025-10-28)
 
 
