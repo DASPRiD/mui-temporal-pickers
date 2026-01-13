@@ -156,7 +156,7 @@ export class Formatter {
     }
 
     public parsePlainTime(value: string, format: string): Temporal.PlainTime | null {
-        const tokens = parseTokenString(format);
+        const tokens = parseTokenString(this.expandFormat(format));
         const components = this.parseInputFromFormat(value, tokens);
 
         if (!components) {
@@ -175,7 +175,7 @@ export class Formatter {
     }
 
     public parsePlainDate(value: string, format: string): Temporal.PlainDate | null {
-        const tokens = parseTokenString(format);
+        const tokens = parseTokenString(this.expandFormat(format));
         const components = this.parseInputFromFormat(value, tokens);
 
         if (!components) {
@@ -194,7 +194,7 @@ export class Formatter {
     }
 
     public parsePlainDateTime(value: string, format: string): Temporal.PlainDateTime | null {
-        const tokens = parseTokenString(format);
+        const tokens = parseTokenString(this.expandFormat(format));
         const components = this.parseInputFromFormat(value, tokens);
 
         if (!components) {
@@ -216,7 +216,7 @@ export class Formatter {
     }
 
     public parsePlainYearMonth(value: string, format: string): Temporal.PlainYearMonth | null {
-        const tokens = parseTokenString(format);
+        const tokens = parseTokenString(this.expandFormat(format));
         const components = this.parseInputFromFormat(value, tokens);
 
         if (!components) {
@@ -234,7 +234,7 @@ export class Formatter {
     }
 
     public parsePlainMonthDay(value: string, format: string): Temporal.PlainMonthDay | null {
-        const tokens = parseTokenString(format);
+        const tokens = parseTokenString(this.expandFormat(format));
         const components = this.parseInputFromFormat(value, tokens);
 
         if (!components) {
