@@ -86,7 +86,7 @@ const tokenToFieldMap: Record<string, keyof ParsedComponents> = {
 
 const tokenRegexMap: Partial<Record<Token, string>> = {
     yy: "\\d{1,4}",
-    yyyy: "\\d{4}",
+    yyyy: "\\d{1,4}",
     M: "\\d{1,2}",
     MM: "\\d{2}",
     d: "\\d{1,2}",
