@@ -306,10 +306,10 @@ export class Formatter {
         if (value instanceof Temporal.PlainYearMonth || hasDate) {
             switch (token) {
                 case "yy":
-                    return value.toString().slice(-2);
+                    return value.year.toString().slice(-2).padStart(2, "0");
 
                 case "yyyy":
-                    return value.year.toString();
+                    return value.year.toString().padStart(4, "0");
             }
         }
 
