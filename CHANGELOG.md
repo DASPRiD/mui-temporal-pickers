@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.1.1...v1.1.2) (2026-02-25)
+
+
+### Bug Fixes
+
+* add zero padding to yyyy and yy formatter output ([#4](https://github.com/DASPRiD/mui-temporal-pickers/issues/4)) ([7eb0472](https://github.com/DASPRiD/mui-temporal-pickers/commit/7eb0472b37a977741b96acbdfb8f612893aab7c5))
+
 ## [1.1.1](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.1.0...v1.1.1) (2026-01-13)
 
 
