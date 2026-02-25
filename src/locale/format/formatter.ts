@@ -85,7 +85,7 @@ const tokenToFieldMap: Record<string, keyof ParsedComponents> = {
 };
 
 const tokenRegexMap: Partial<Record<Token, string>> = {
-    yy: "\\d{1,4}",
+    yy: "\\d{2}",
     yyyy: "\\d{4}",
     M: "\\d{1,2}",
     MM: "\\d{2}",
@@ -306,10 +306,10 @@ export class Formatter {
         if (value instanceof Temporal.PlainYearMonth || hasDate) {
             switch (token) {
                 case "yy":
-                    return value.toString().slice(-2);
+                    return value.year.toString().slice(-2).padStart(2, "0");
 
                 case "yyyy":
-                    return value.year.toString();
+                    return value.year.toString().padStart(4, "0");
             }
         }
 
