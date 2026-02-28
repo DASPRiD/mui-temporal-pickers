@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.1.2...v1.1.3) (2026-02-28)
+
+
+### Bug Fixes
+
+* do not maximize locale ([43c9f31](https://github.com/DASPRiD/mui-temporal-pickers/commit/43c9f31f3b8e252895f1d3b3e81a99c163c02af5))
+
 ## [1.1.2](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.1.1...v1.1.2) (2026-02-25)
 
 
