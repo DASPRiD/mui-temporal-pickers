@@ -15,15 +15,14 @@ export class LocaleSpecs {
     }
 
     public static get(locale: Intl.Locale): LocaleSpecs {
-        const maximizedLocale = locale.maximize();
-        const cacheKey = maximizedLocale.toString();
+        const cacheKey = locale.toString();
         const cached = cache.get(cacheKey);
 
         if (cached) {
             return cached;
         }
 
-        const specs = new LocaleSpecs(maximizedLocale);
+        const specs = new LocaleSpecs(locale);
         cache.set(cacheKey, specs);
         return specs;
     }
