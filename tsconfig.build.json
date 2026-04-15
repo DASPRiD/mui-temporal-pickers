@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "lib": ["es6", "dom"],
+        "lib": ["ES2022", "dom"],
         "target": "ES2022",
         "module": "nodenext",
         "moduleResolution": "node16",
@@ -10,6 +10,7 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "declaration": true,
+        "rootDir": "src",
         "outDir": "dist"
     },
     "include": [
