@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.1.3...v1.2.0) (2026-04-15)
+
+
+### Features
+
+* bump all dependencies to latest and add MUI X v9 support ([67b850f](https://github.com/DASPRiD/mui-temporal-pickers/commit/67b850f7e26e8cb2a8e6ee32ffc95ca45b9056ba))
+
 ## [1.1.3](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.1.2...v1.1.3) (2026-02-28)
 
 
