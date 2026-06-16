@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.2.0...v1.2.1) (2026-06-16)
+
+
+### Bug Fixes
+
+* export plain-date-month-types ([#6](https://github.com/DASPRiD/mui-temporal-pickers/issues/6)) ([ee26a4f](https://github.com/DASPRiD/mui-temporal-pickers/commit/ee26a4f702d385aa93a7fcf2bcfb6ecc1a432937))
+
 # [1.2.0](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.1.3...v1.2.0) (2026-04-15)
 
 
