@@ -37,13 +37,13 @@ const comparisonOperations: AdapterComparisonOperations<Temporal.PlainDateTime> 
     isSameYear: (value, comparing) => value.year === comparing.year,
     isSameMonth: (value, comparing) =>
         value.toPlainDate().toPlainYearMonth().equals(comparing.toPlainDate().toPlainYearMonth()),
-    isSameDay: (value, comparing) => value.equals(comparing),
+    isSameDay: (value, comparing) => value.toPlainDate().equals(comparing.toPlainDate()),
     isSameHour: (value, comparing) =>
         value.toPlainDate().equals(comparing.toPlainDate()) && value.hour === comparing.hour,
-    isAfter: (value, comparing) => Temporal.PlainDate.compare(value, comparing) > 0,
+    isAfter: (value, comparing) => Temporal.PlainDateTime.compare(value, comparing) > 0,
     isAfterYear: (value, comparing) => value.year > comparing.year,
     isAfterDay: (value, comparing) => Temporal.PlainDate.compare(value, comparing) > 0,
-    isBefore: (value, comparing) => Temporal.PlainDate.compare(value, comparing) < 0,
+    isBefore: (value, comparing) => Temporal.PlainDateTime.compare(value, comparing) < 0,
     isBeforeYear: (value, comparing) => value.year < comparing.year,
     isBeforeDay: (value, comparing) => Temporal.PlainDate.compare(value, comparing) < 0,
 };

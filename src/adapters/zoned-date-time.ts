@@ -47,7 +47,8 @@ const comparisonOperations: AdapterComparisonOperations<Temporal.ZonedDateTime> 
             .toPlainDate()
             .toPlainYearMonth()
             .equals(comparing.withTimeZone(value).toPlainDate().toPlainYearMonth()),
-    isSameDay: (value, comparing) => value.equals(comparing.withTimeZone(value)),
+    isSameDay: (value, comparing) =>
+        value.toPlainDate().equals(comparing.withTimeZone(value).toPlainDate()),
     isSameHour: (value, comparing) => {
         const comparingSameZone = comparing.withTimeZone(value);
         return (
@@ -55,13 +56,11 @@ const comparisonOperations: AdapterComparisonOperations<Temporal.ZonedDateTime> 
             value.hour === comparingSameZone.hour
         );
     },
-    isAfter: (value, comparing) =>
-        Temporal.PlainDate.compare(value, comparing.withTimeZone(value)) > 0,
+    isAfter: (value, comparing) => Temporal.ZonedDateTime.compare(value, comparing) > 0,
     isAfterYear: (value, comparing) => value.year > comparing.withTimeZone(value).year,
     isAfterDay: (value, comparing) =>
         Temporal.PlainDate.compare(value, comparing.withTimeZone(value)) > 0,
-    isBefore: (value, comparing) =>
-        Temporal.PlainDate.compare(value, comparing.withTimeZone(value)) < 0,
+    isBefore: (value, comparing) => Temporal.ZonedDateTime.compare(value, comparing) < 0,
     isBeforeYear: (value, comparing) => value.year < comparing.withTimeZone(value).year,
     isBeforeDay: (value, comparing) =>
         Temporal.PlainDate.compare(value, comparing.withTimeZone(value)) < 0,
