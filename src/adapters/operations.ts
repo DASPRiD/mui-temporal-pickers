@@ -50,12 +50,14 @@ export type AdapterDateOperations<T extends ValidTemporal> = {
     addWeeks: (value: T, amount: number) => T;
     addDays: (value: T, amount: number) => T;
     getYear: (value: T) => number;
+    /** Zero-based, as MUI's adapter contract requires, unlike Temporal's `month`. */
     getMonth: (value: T) => number;
     getDate: (value: T) => number;
     getDaysInMonth: (value: T) => number;
     getWeekNumber: (value: T) => number;
     getDayOfWeek: (value: T) => number;
     setYear: (value: T, year: number) => T;
+    /** Zero-based, as MUI's adapter contract requires, unlike Temporal's `month`. */
     setMonth: (value: T, month: number) => T;
     setDate: (value: T, date: number) => T;
     getWeekArray: (value: T, adapter: AdapterTemporalBase<T>) => T[][];
@@ -74,7 +76,7 @@ export const noopAdapterDateOperations: AdapterDateOperations<ValidTemporal> = {
     addWeeks: (value) => value,
     addDays: (value) => value,
     getYear: () => 2000,
-    getMonth: () => 1,
+    getMonth: () => 0,
     getDate: () => 1,
     getDaysInMonth: () => 30,
     getWeekNumber: () => 1,
@@ -98,7 +100,7 @@ export const defaultAdapterDateOperations: AdapterDateOperations<ValidDateTempor
     addWeeks: (value, amount) => value.add({ weeks: amount }),
     addDays: (value, amount) => value.add({ days: amount }),
     getYear: (value) => value.year,
-    getMonth: (value) => value.month,
+    getMonth: (value) => value.month - 1,
     getDate: (value) => value.day,
     getDaysInMonth: (value) => value.daysInMonth,
     getWeekNumber: (value) => {
@@ -110,7 +112,7 @@ export const defaultAdapterDateOperations: AdapterDateOperations<ValidDateTempor
     },
     getDayOfWeek: (value) => value.dayOfWeek,
     setYear: (value, year) => value.with({ year }),
-    setMonth: (value, month) => value.with({ month }),
+    setMonth: (value, month) => value.with({ month: month + 1 }),
     setDate: (value, date) => value.with({ day: date }),
     getWeekArray: (value, adapter) => {
         const start = adapter.startOfWeek(adapter.startOfMonth(value));

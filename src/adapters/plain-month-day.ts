@@ -75,7 +75,7 @@ export class AdapterTemporalPlainMonthDay extends AdapterTemporalBase<Temporal.P
                 addDays: (value, amount) =>
                     value.toPlainDate({ year: 2000 }).add({ days: amount }).toPlainMonthDay(),
                 getYear: () => 2000,
-                getMonth: (value) => value.toPlainDate({ year: 2000 }).month,
+                getMonth: (value) => value.toPlainDate({ year: 2000 }).month - 1,
                 getDate: (value) => value.day,
                 getDaysInMonth: (value) => value.toPlainDate({ year: 2000 }).daysInMonth,
                 getWeekNumber: (value) =>
@@ -83,7 +83,7 @@ export class AdapterTemporalPlainMonthDay extends AdapterTemporalBase<Temporal.P
                 getDayOfWeek: (value) =>
                     ((value.toPlainDate({ year: 2000 }).dayOfYear - 1) % 7) + 1,
                 setYear: (value) => value,
-                setMonth: (value, month) => value.with({ month }),
+                setMonth: (value, month) => value.with({ month: month + 1 }),
                 setDate: (value, date) => value.with({ day: date }),
                 getWeekArray: (value, adapter) => {
                     const daysInMonth = adapter.getDaysInMonth(value);
@@ -97,7 +97,7 @@ export class AdapterTemporalPlainMonthDay extends AdapterTemporalBase<Temporal.P
 
                     const lastWeek = nestedWeeks[nestedWeeks.length - 1];
                     const missingDays = 7 - lastWeek.length;
-                    const currentMonth = adapter.getMonth(value);
+                    const currentMonth = value.toPlainDate({ year: 2000 }).month;
                     const nextMonth = currentMonth === 12 ? 1 : currentMonth + 1;
 
                     for (let day = 1; day <= missingDays; ++day) {
