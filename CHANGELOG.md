@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.2.1...v1.2.2) (2026-08-26)
+
+
+### Bug Fixes
+
+* index adapter months from zero ([#9](https://github.com/DASPRiD/mui-temporal-pickers/issues/9)) ([dc60a87](https://github.com/DASPRiD/mui-temporal-pickers/commit/dc60a87323d4791d7f292d37d088a6b5bd3ca2bd)), closes [#7](https://github.com/DASPRiD/mui-temporal-pickers/issues/7)
+
 ## [1.2.1](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.2.0...v1.2.1) (2026-06-16)
 
 
