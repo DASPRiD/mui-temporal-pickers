@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.2.2...v1.2.3) (2026-09-02)
+
+
+### Bug Fixes
+
+* compare date-times by date and time, not date alone ([#10](https://github.com/DASPRiD/mui-temporal-pickers/issues/10)) ([b9ec47f](https://github.com/DASPRiD/mui-temporal-pickers/commit/b9ec47fed896a9cf079ae0ea7ece660694767bab)), closes [#8](https://github.com/DASPRiD/mui-temporal-pickers/issues/8)
+
 ## [1.2.2](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.2.1...v1.2.2) (2026-08-26)
 
 
