@@ -122,7 +122,7 @@ export const defaultAdapterDateOperations: AdapterDateOperations<ValidDateTempor
         let current = start;
         const nestedWeeks: ValidDateTemporal[][] = [];
 
-        while (!adapter.isAfter(current, end)) {
+        while (!adapter.isAfterDay(current, end)) {
             const weekNumber = Math.floor(count / 7);
             nestedWeeks[weekNumber] = nestedWeeks[weekNumber] ?? [];
             nestedWeeks[weekNumber].push(current);
