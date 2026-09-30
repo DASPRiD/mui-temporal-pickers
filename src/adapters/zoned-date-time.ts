@@ -8,6 +8,7 @@ import {
     type AdapterTimeOperations,
     defaultAdapterDateOperations,
     defaultAdapterTimeOperations,
+    defaultAdapterTimezoneOperations,
     isExactTimeString,
     resolveTimeZoneId,
 } from "./operations.js";
@@ -26,7 +27,7 @@ const conversionOperations: AdapterConversionOperations<Temporal.ZonedDateTime> 
         const timeZoneId = resolveTimeZoneId(timezone);
 
         if (!value) {
-            return Temporal.Now.plainDateTimeISO().toZonedDateTime(timeZoneId) as R;
+            return Temporal.Now.zonedDateTimeISO(timeZoneId) as R;
         }
 
         if (isExactTimeString(value)) {
@@ -90,6 +91,7 @@ export class AdapterTemporalZonedDateTime extends AdapterTemporalBase<Temporal.Z
                 defaultAdapterDateOperations as AdapterDateOperations<Temporal.ZonedDateTime>,
             timeOperations:
                 defaultAdapterTimeOperations as AdapterTimeOperations<Temporal.ZonedDateTime>,
+            timezoneOperations: defaultAdapterTimezoneOperations,
         });
     }
 }
