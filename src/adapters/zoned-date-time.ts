@@ -8,6 +8,7 @@ import {
     type AdapterTimeOperations,
     defaultAdapterDateOperations,
     defaultAdapterTimeOperations,
+    isExactTimeString,
     resolveTimeZoneId,
 } from "./operations.js";
 
@@ -22,10 +23,17 @@ const conversionOperations: AdapterConversionOperations<Temporal.ZonedDateTime> 
             return null as R;
         }
 
-        const plainDateTime = !value
-            ? Temporal.Now.plainDateTimeISO()
-            : Temporal.PlainDateTime.from(value);
-        return plainDateTime.toZonedDateTime(resolveTimeZoneId(timezone)) as R;
+        const timeZoneId = resolveTimeZoneId(timezone);
+
+        if (!value) {
+            return Temporal.Now.plainDateTimeISO().toZonedDateTime(timeZoneId) as R;
+        }
+
+        if (isExactTimeString(value)) {
+            return Temporal.Instant.from(value).toZonedDateTimeISO(timeZoneId) as R;
+        }
+
+        return Temporal.PlainDateTime.from(value).toZonedDateTime(timeZoneId) as R;
     },
     toJsDate: (value) => {
         return new Date(value.epochMilliseconds);

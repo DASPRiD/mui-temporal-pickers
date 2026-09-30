@@ -6,6 +6,8 @@ import {
     type AdapterConversionOperations,
     type AdapterTimeOperations,
     defaultAdapterTimeOperations,
+    hasZuluDesignator,
+    zuluPlainDateTimeFrom,
 } from "./operations.js";
 
 const conversionOperations: AdapterConversionOperations<Temporal.PlainTime> = {
@@ -18,6 +20,10 @@ const conversionOperations: AdapterConversionOperations<Temporal.PlainTime> = {
 
         if (!value) {
             return Temporal.Now.plainTimeISO() as R;
+        }
+
+        if (hasZuluDesignator(value)) {
+            return zuluPlainDateTimeFrom(value).toPlainTime() as R;
         }
 
         return Temporal.PlainTime.from(value) as R;

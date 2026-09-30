@@ -1,7 +1,12 @@
 import type { AdapterOptions, DateBuilderReturnType } from "@mui/x-date-pickers";
 import { dateFormatTokenMap } from "../locale/format/tokens.js";
 import { AdapterTemporalBase } from "./base.js";
-import type { AdapterComparisonOperations, AdapterConversionOperations } from "./operations.js";
+import {
+    type AdapterComparisonOperations,
+    type AdapterConversionOperations,
+    hasZuluDesignator,
+    zuluPlainDateTimeFrom,
+} from "./operations.js";
 
 const conversionOperations: AdapterConversionOperations<Temporal.PlainYearMonth> = {
     date: <T extends string | null | undefined>(value?: T): DateBuilderReturnType<T> => {
@@ -13,6 +18,10 @@ const conversionOperations: AdapterConversionOperations<Temporal.PlainYearMonth>
 
         if (!value) {
             return Temporal.Now.plainDateISO().toPlainYearMonth() as R;
+        }
+
+        if (hasZuluDesignator(value)) {
+            return zuluPlainDateTimeFrom(value).toPlainDate().toPlainYearMonth() as R;
         }
 
         return Temporal.PlainDate.from(value).toPlainYearMonth() as R;

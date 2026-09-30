@@ -24,6 +24,38 @@ export type AdapterConversionOperations<T extends ValidTemporal> = {
     parse: (value: string, format: string, localeSpecs: LocaleSpecs) => T | null;
 };
 
+const zuluPattern = /[Zz](\[[^\]]*\])*$/;
+const exactTimePattern = /([Zz]|[+-]\d{2}:?\d{2})(\[[^\]]*\])*$/;
+// A key-value annotation such as `[u-ca=hebrew]` names a calendar, not a zone.
+const timeZoneAnnotationPattern = /\[[^\]=]+\]/;
+
+/**
+ * Reports whether a plain-type `date()` must read a string as an exact time.
+ *
+ * `@mui/x-date-pickers-pro` produces one during range drag editing, reading day cells back
+ * through `adapter.date(new Date(timestamp).toISOString())`.
+ *
+ * A numeric offset deliberately does not count. Temporal accepts one on a plain type and drops
+ * it, which is the right reading when the target has no instant to anchor to.
+ */
+export const hasZuluDesignator = (value: string): boolean => zuluPattern.test(value);
+
+export const isExactTimeString = (value: string): boolean => exactTimePattern.test(value);
+
+/**
+ * Reads a Zulu string as the wall clock it denotes, in whichever zone the string names.
+ *
+ * The UTC fallback pairs with every plain-type `toJsDate` here, which pivots through UTC, so a
+ * string naming no zone restores the value MUI X was handed.
+ */
+export const zuluPlainDateTimeFrom = (value: string): Temporal.PlainDateTime => {
+    if (timeZoneAnnotationPattern.test(value)) {
+        return Temporal.ZonedDateTime.from(value).toPlainDateTime();
+    }
+
+    return Temporal.Instant.from(value).toZonedDateTimeISO("UTC").toPlainDateTime();
+};
+
 export type AdapterComparisonOperations<T extends ValidTemporal> = {
     isEqual: (value: T, comparing: T) => boolean;
     isSameYear: (value: T, comparing: T) => boolean;

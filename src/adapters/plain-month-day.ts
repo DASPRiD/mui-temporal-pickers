@@ -2,7 +2,12 @@ import type { AdapterOptions, DateBuilderReturnType } from "@mui/x-date-pickers"
 import { firstDayOfWeek, lastDayOfMonth, lastDayOfWeek } from "temporal-extra";
 import { dateFormatTokenMap } from "../locale/format/tokens.js";
 import { AdapterTemporalBase } from "./base.js";
-import type { AdapterComparisonOperations, AdapterConversionOperations } from "./operations.js";
+import {
+    type AdapterComparisonOperations,
+    type AdapterConversionOperations,
+    hasZuluDesignator,
+    zuluPlainDateTimeFrom,
+} from "./operations.js";
 
 const conversionOperations: AdapterConversionOperations<Temporal.PlainMonthDay> = {
     date: <T extends string | null | undefined>(value?: T): DateBuilderReturnType<T> => {
@@ -14,6 +19,10 @@ const conversionOperations: AdapterConversionOperations<Temporal.PlainMonthDay> 
 
         if (!value) {
             return Temporal.Now.plainDateISO().toPlainMonthDay() as R;
+        }
+
+        if (hasZuluDesignator(value)) {
+            return zuluPlainDateTimeFrom(value).toPlainDate().toPlainMonthDay() as R;
         }
 
         return Temporal.PlainDate.from(value).toPlainMonthDay() as R;
