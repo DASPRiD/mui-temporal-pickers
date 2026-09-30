@@ -25,7 +25,7 @@ const conversionOperations: AdapterConversionOperations<Temporal.PlainMonthDay> 
             return zuluPlainDateTimeFrom(value).toPlainDate().toPlainMonthDay() as R;
         }
 
-        return Temporal.PlainDate.from(value).toPlainMonthDay() as R;
+        return Temporal.PlainMonthDay.from(value) as R;
     },
     toJsDate: (value) => {
         return new Date(
