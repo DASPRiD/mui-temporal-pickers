@@ -1,3 +1,12 @@
+## [1.2.4](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.2.3...v1.2.4) (2026-09-30)
+
+
+### Bug Fixes
+
+* accept exact-time strings in adapter date conversion ([49d8544](https://github.com/DASPRiD/mui-temporal-pickers/commit/49d85446913c44a8510ff2eede32ce883ed492b8)), closes [#11](https://github.com/DASPRiD/mui-temporal-pickers/issues/11)
+* correct time zone handling in the zoned adapter ([40ec36a](https://github.com/DASPRiD/mui-temporal-pickers/commit/40ec36a7122bd23e4777e0f53819795f43a1321d))
+* parse year-month and month-day with their own ISO forms ([a174dfd](https://github.com/DASPRiD/mui-temporal-pickers/commit/a174dfdba4fe795422f12e67a7f7b67c3c6ccf80))
+
 ## [1.2.3](https://github.com/DASPRiD/mui-temporal-pickers/compare/v1.2.2...v1.2.3) (2026-09-02)
 
 
